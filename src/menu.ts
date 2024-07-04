@@ -1,7 +1,7 @@
 const root = document.getElementById('root')!
 
 const anchorTag = (link : string, textNode : string) : string => {
-  let result = `<a href = "${link}">${textNode}</a>`
+  let result = `<a href = "#${link}">${textNode}</a>`
   return result
 }
 const litag = (children : string) : string => {
@@ -28,8 +28,14 @@ const basicData : BasicData = {
 const assembley = (object : BasicData) : string => {
   let result = ''
   for(let key in object){
-    result += litag(anchorTag(`#${key}`,object[key]))
+    const value = object[key as keyof BasicData] // ? keyOf가 뭐지..?
+    result += litag(anchorTag(`${key}`, value))
   }
+
+
+  // for(let key in object){
+  //   result += litag(anchorTag(`#${key}`,object[key]))
+  // }
   // litag(anchorTag(`#${object.jaemin}`, object.jaemin))
   return result
 }
@@ -40,3 +46,8 @@ root.innerHTML = `
   ${assembley(basicData)}
 </ul>
 `
+/**
+ * * =============================================
+ * * html 을 대신해서 만든 html 작성 코드
+ * * React, CSR
+ */
