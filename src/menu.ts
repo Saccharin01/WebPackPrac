@@ -1,7 +1,7 @@
 const root = document.getElementById('root')!
 
-const anchorTag = () : string => {
-  let result = `<a href = "#">메뉴</a>`
+const anchorTag = (link : string, textNode : string) : string => {
+  let result = `<a href = "${link}">${textNode}}</a>`
   return result
 }
 
@@ -12,6 +12,6 @@ const litag = (children : string) : string => {
 
 root.innerHTML = `
 <ul>
-  ${litag(anchorTag())}
+  ${litag(anchorTag("#123", "asdfqwer"))}
 </ul>
 `
